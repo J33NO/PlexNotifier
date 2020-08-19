@@ -75,7 +75,7 @@ namespace Plex_Notifier_App
                             }
                             else
                             {
-                                header = txtOther.Text;
+                                header = "PLEX - " + txtOther.Text;
                             }
                             string body = header + txtMessageBody.Text + footer;
                             createMessage(phoneNumber, from, sid, body);
