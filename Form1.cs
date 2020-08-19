@@ -136,7 +136,6 @@ namespace Plex_Notifier_App
 
         public void LoadUser()
         {
-              
             // Next step is to try and swap from datatable to binding the data model to the datagridview
             // see: https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls
 
