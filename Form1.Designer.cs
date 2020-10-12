@@ -48,6 +48,7 @@
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkBoxSelectAll = new System.Windows.Forms.CheckBox();
+            this.NewShowRadioBtn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,7 +138,7 @@
             // MaintenanceRadioBtn
             // 
             this.MaintenanceRadioBtn.AutoSize = true;
-            this.MaintenanceRadioBtn.Location = new System.Drawing.Point(775, 175);
+            this.MaintenanceRadioBtn.Location = new System.Drawing.Point(775, 197);
             this.MaintenanceRadioBtn.Name = "MaintenanceRadioBtn";
             this.MaintenanceRadioBtn.Size = new System.Drawing.Size(87, 17);
             this.MaintenanceRadioBtn.TabIndex = 13;
@@ -148,7 +149,7 @@
             // OtherRadioBtn
             // 
             this.OtherRadioBtn.AutoSize = true;
-            this.OtherRadioBtn.Location = new System.Drawing.Point(775, 199);
+            this.OtherRadioBtn.Location = new System.Drawing.Point(775, 221);
             this.OtherRadioBtn.Name = "OtherRadioBtn";
             this.OtherRadioBtn.Size = new System.Drawing.Size(51, 17);
             this.OtherRadioBtn.TabIndex = 14;
@@ -158,7 +159,7 @@
             // 
             // txtOther
             // 
-            this.txtOther.Location = new System.Drawing.Point(832, 198);
+            this.txtOther.Location = new System.Drawing.Point(832, 220);
             this.txtOther.Name = "txtOther";
             this.txtOther.Size = new System.Drawing.Size(489, 20);
             this.txtOther.TabIndex = 15;
@@ -241,11 +242,23 @@
             this.chkBoxSelectAll.UseVisualStyleBackColor = true;
             this.chkBoxSelectAll.CheckedChanged += new System.EventHandler(this.chkBoxSelectAll_CheckedChanged);
             // 
+            // NewShowRadioBtn
+            // 
+            this.NewShowRadioBtn.AutoSize = true;
+            this.NewShowRadioBtn.Location = new System.Drawing.Point(775, 174);
+            this.NewShowRadioBtn.Name = "NewShowRadioBtn";
+            this.NewShowRadioBtn.Size = new System.Drawing.Size(94, 17);
+            this.NewShowRadioBtn.TabIndex = 18;
+            this.NewShowRadioBtn.TabStop = true;
+            this.NewShowRadioBtn.Text = "New TV Show";
+            this.NewShowRadioBtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 632);
+            this.Controls.Add(this.NewShowRadioBtn);
             this.Controls.Add(this.chkBoxSelectAll);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtOther);
@@ -290,6 +303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.CheckBox chkBoxSelectAll;
+        private System.Windows.Forms.RadioButton NewShowRadioBtn;
     }
 }
 
