@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Twilio;
+using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
 
 namespace Plex_Notifier_App
@@ -24,7 +25,10 @@ namespace Plex_Notifier_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadUser();
+            // Next step is to try and swap from datatable to binding the data model to the datagridview
+            // see: https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls
+            List<User> users = User.GetUsers();
+            dataGridView1.DataSource = users;
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
@@ -69,16 +73,20 @@ namespace Plex_Notifier_App
                             {
                                 header = "PLEX - New Movie Alert: ";
                             }
+                            else if(NewShowRadioBtn.Checked)
+                            {
+                                header = "PLEX - New TV Show Alert: ";
+                            }
                             else if (MaintenanceRadioBtn.Checked)
                             {
                                 header = "PLEX - Maintenance Alert: ";
                             }
                             else
                             {
-                                header = "PLEX - " + txtOther.Text;
+                                header = "PLEX - " + txtOther.Text + ": ";
                             }
                             string body = header + txtMessageBody.Text + footer;
-                            createMessage(phoneNumber, from, sid, body);
+                            SMS.createMessage(phoneNumber, from, sid, body);
                             messagesSent += 1;
                         }
                         catch (Exception ex)
@@ -115,7 +123,7 @@ namespace Plex_Notifier_App
                 lblResult.Text = "Error: Please enter a Notification.";
                 return false;
             }
-            else if(NewMovieRadioBtn.Checked == false && MaintenanceRadioBtn.Checked == false && OtherRadioBtn.Checked == false)
+            else if(NewMovieRadioBtn.Checked == false && NewShowRadioBtn.Checked ==  false && MaintenanceRadioBtn.Checked == false && OtherRadioBtn.Checked == false)
             {
                 lblResult.Text = "Error: Please select a Notification Type";
                 return false;
@@ -124,28 +132,6 @@ namespace Plex_Notifier_App
             {
                 return true;
             }
-        }
-
-        static void createMessage(string to, string from, string sid, string body)
-        {
-            var message = MessageResource.Create(
-                to: to,
-                from: from,
-                body: body);
-        }
-
-        public void LoadUser()
-        {
-            // Next step is to try and swap from datatable to binding the data model to the datagridview
-            // see: https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls
-
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString);
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM [User]", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            con.Close();
         }
 
         private void chkBoxSelectAll_CheckedChanged(object sender, EventArgs e)
